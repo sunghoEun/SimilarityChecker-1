@@ -1,32 +1,29 @@
 #include "pch.h"
 #include "../Project6/source.cpp"
 
-TEST(TestSimilarityChecker, lengthPoint1) {
+class SimilarityCheckerFixture : public testing::Test
+{
+public:
+	SimilarityChecker checker{};
+};
 
-	Cal cal;
-
+TEST_F(SimilarityCheckerFixture, lengthPoint1) {
 	string input1 = "ABC";
 	string input2 = "ABC";
-	int ret = cal.getLengthPoint(input1, input2);
+	int ret = checker.getLengthPoint(input1, input2);
   EXPECT_EQ(60, ret);
 }
 
-TEST(TestSimilarityChecker, lengthPoint2) {
-
-	Cal cal;
-
+TEST_F(SimilarityCheckerFixture, lengthPoint2) {
 	string input1 = "ABC";
 	string input2 = "ABCABC";
-	int ret = cal.getLengthPoint(input1, input2);
+	int ret = checker.getLengthPoint(input1, input2);
 	EXPECT_EQ(0, ret);
 }
 
-TEST(TestSimilarityChecker, lengthPoint3) {
-
-	Cal cal;
-
+TEST_F(SimilarityCheckerFixture, lengthPoint3) {
 	string input1 = "ABC";
 	string input2 = "ABCA";
-	int ret = cal.getLengthPoint(input1, input2);
+	int ret = checker.getLengthPoint(input1, input2);
 	EXPECT_EQ(40, ret);
 }
